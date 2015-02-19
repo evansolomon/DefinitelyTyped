@@ -100,6 +100,7 @@ interface Async {
     iterator(tasks: Function[]): Function;
     apply(fn: Function, ...arguments: any[]): void;
     nextTick<T>(callback: Function): void;
+    forever(fn: Function, callback: Function): void;
 
     times<T> (n: number, callback: AsyncTimesCallback<T>): void;
     timesSeries<T> (n: number, callback: AsyncTimesCallback<T>): void;
