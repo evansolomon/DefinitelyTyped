@@ -31,6 +31,20 @@ declare module "aws-sdk" {
 		xhrWithCredentials?: boolean;
 	}
 
+	export class Endpoint {
+		constructor(endpoint: string|Object);
+		host: string;
+		hostname: string;
+		href: string;
+		port: number;
+		protocol: string;
+	}
+
+	export class Service {
+		endpoint: Endpoint;
+		setEndpoint: (e: string|Object) => void;
+	}
+
 	export interface Services {
 		autoscaling?: any;
 		cloudformation?: any;
@@ -97,36 +111,36 @@ declare module "aws-sdk" {
 		region: string;
 	}
 
-	export class SQS {
+	export class SQS extends Service {
 		constructor(options?: any);
 		public client: Sqs.Client;
 	}
 
-	export class SES {
+	export class SES extends Service {
 		constructor(options?: any);
 		public client: Ses.Client;
 	}
 
-	export class SNS {
+	export class SNS extends Service {
 		constructor(options?: any);
 		public client: Sns.Client;
 	}
 
-	export class SimpleWorkflow {
+	export class SimpleWorkflow extends Service {
 		constructor(options?: any);
 		public client: Swf.Client;
 	}
 
-	export class S3 {
+	export class S3 extends Service {
 		constructor(options?: any);
 		public client: s3.Client;
 	}
 
-	export class DynamoDB {
+	export class DynamoDB extends Service {
 		constructor(options?: any);
 	}
 
-	export class Kinesis {
+	export class Kinesis extends Service {
 		constructor(options?: any);
 		public client: Kinesis.Client
 	}
