@@ -40,6 +40,17 @@ declare module "aws-sdk" {
 		protocol: string;
 	}
 
+	export class Request {
+		startTime: Date;
+		abort(): Request;
+		createReadStream(): NodeJS.ReadableStream;
+		eachItem(callback: (err: any, data: any) => void): void;
+		isPageable(): Boolean;
+		send(callback: (err: any, data: any) => void): void;
+		on(callback: Function): Request;
+	}
+
+
 	export class Service {
 		endpoint: Endpoint;
 		setEndpoint: (e: string|Object) => void;
@@ -143,19 +154,19 @@ declare module "aws-sdk" {
 	export class Kinesis extends Service {
 		constructor(options?: any);
 		public client: kinesis.Client;
-		addTagsToStream(params: kinesis.AddTagsToStreamRequest, callback: (err: any) => void): void;
-		createStream(params: kinesis.CreateStreamRequest, callback: (err: any) => void): void;
-		deleteStream(params: kinesis.DeleteStreamRequest, callback: (err: any) => void): void;
-		describeStream(params: kinesis.DescribeStreamRequest, callback: (err: any, data: kinesis.DescribeStreamResult) => void): void;
-		getRecords(params: kinesis.GetRecordsRequest, callback: (err: any, data: kinesis.GetRecordsResult) => void): void;
-		getShardIterator(params: kinesis.GetShardIteratorRequest, callback: (err: any, data: kinesis.GetShardIteratorResult) => void): void;
-		listStreams(params: kinesis.ListStreamsRequest, callback: (err: any, data: kinesis.ListStreamsResult) => void): void;
-		listTagsForStream(params: kinesis.ListTagsForStreamRequest, callback: (err: any, data: kinesis.ListTagsForStreamResult) => void): void;
-		mergeShards(params: kinesis.MergeShardsRequest, callback: (err: any) => void): void;
-		putRecord(params: kinesis.PutRecordRequest, callback: (err: any, data: kinesis.PutRecordResult) => void): void;
-		putRecords(params: kinesis.PutRecordsRequest, callback: (err: any, data: kinesis.PutRecordsResult) => void): void;
-		removeTagsFromStream(params: kinesis.RemoveTagsFromStreamRequest, callback: (err: any) => void): void;
-		splitShard(params: kinesis.SplitShardRequest, callback: (err: any) => void): void;
+		addTagsToStream(params: kinesis.AddTagsToStreamRequest, callback: (err: any) => void): Request;
+		createStream(params: kinesis.CreateStreamRequest, callback: (err: any) => void): Request;
+		deleteStream(params: kinesis.DeleteStreamRequest, callback: (err: any) => void): Request;
+		describeStream(params: kinesis.DescribeStreamRequest, callback: (err: any, data: kinesis.DescribeStreamResult) => void): Request;
+		getRecords(params: kinesis.GetRecordsRequest, callback: (err: any, data: kinesis.GetRecordsResult) => void): Request;
+		getShardIterator(params: kinesis.GetShardIteratorRequest, callback: (err: any, data: kinesis.GetShardIteratorResult) => void): Request;
+		listStreams(params: kinesis.ListStreamsRequest, callback: (err: any, data: kinesis.ListStreamsResult) => void): Request;
+		listTagsForStream(params: kinesis.ListTagsForStreamRequest, callback: (err: any, data: kinesis.ListTagsForStreamResult) => void): Request;
+		mergeShards(params: kinesis.MergeShardsRequest, callback: (err: any) => void): Request;
+		putRecord(params: kinesis.PutRecordRequest, callback: (err: any, data: kinesis.PutRecordResult) => Request): Request;
+		putRecords(params: kinesis.PutRecordsRequest, callback: (err: any, data: kinesis.PutRecordsResult) => void): Request;
+		removeTagsFromStream(params: kinesis.RemoveTagsFromStreamRequest, callback: (err: any) => void): Request;
+		splitShard(params: kinesis.SplitShardRequest, callback: (err: any) => void): Request;
 
 	}
 
