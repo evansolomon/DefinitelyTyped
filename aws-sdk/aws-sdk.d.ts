@@ -1041,7 +1041,7 @@ declare module "aws-sdk" {
 
 		export interface GetRecordsResult {
 			NextShardIterator?: string;
-			Records: Record[];
+			Records?: Record[];
 		}
 
 		export interface GetShardIteratorResult {
