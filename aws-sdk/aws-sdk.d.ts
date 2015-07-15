@@ -1040,6 +1040,7 @@ declare module "aws-sdk" {
 		}
 
 		export interface GetRecordsResult {
+			MillisBehindLatest?: number;
 			NextShardIterator?: string;
 			Records?: Record[];
 		}
