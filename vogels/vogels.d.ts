@@ -10,8 +10,8 @@ declare module 'vogels' {
   export class Model {
     public config(opts: ModelConfiguration);
 
-    public update(data: any, callback: (err: any) => void);
-    public update(data: any, expected: Object, callback: (err: any) => void);
+    public update(data: any, callback: (err: any, record: Queries.Item) => void);
+    public update(data: any, expected: Object, callback: (err: any, record: Queries.Item) => void);
 
     public query(hashKey: string): Queries.Query.Executable;
 
