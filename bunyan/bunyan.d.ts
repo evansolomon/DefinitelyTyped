@@ -54,6 +54,7 @@ declare module "bunyan" {
         stream?: WritableStream;
         serializers?: Serializers;
         src?: boolean;
+        [x: string]: any;
     }
 
     interface Serializers {
